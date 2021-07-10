@@ -1,0 +1,33 @@
+{
+  "name": "mobileshopping-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon  --inspect src/app.js",
+    "watch":"node-sass --watch src/resources/scss --output src/public/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pisces235/OnlineMobile_Shopping.git"
+  },
+  "keywords": [
+    "GTNM"
+  ],
+  "author": "Pi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pisces235/OnlineMobile_Shopping/issues"
+  },
+  "homepage": "https://github.com/pisces235/OnlineMobile_Shopping#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.11",
+    "node-sass": "^6.0.1"
+  }
+}
