@@ -1,0 +1,120 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.d-flex{
+    display: flex;
+}
+.flex-row{
+    flex-direction: row;
+}
+.flex-column{
+    flex-direction: column;
+}
+.flex-start{
+    justify-content: flex-start;
+}
+.space-between{
+    justify-content: space-between;
+}
+.flex-grow-1{
+    flex-grow: 1;
+}
+h1{
+    font-family:sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 18px;
+    line-height: 40px;
+    border-bottom: 1px solid #fff;
+}
+.container-login{
+    width: 534.5px;
+    margin: 31px;
+}
+.container-login input{
+    border: 1px solid rgb(204, 204, 204) !important;
+    padding: 13px;
+    margin: 6px 0;
+    outline: none;
+    height: 40px;
+    font-size: 12px;
+}
+.container-login span{
+    font-size: 12px;
+    color: rgb(145, 145, 145);
+    margin: 6px 0;
+}
+button{
+    cursor: pointer;
+}
+.btn-login{
+    color: white;
+    background-color: black;
+    margin: 6px 0;
+    height: 35px;
+    width: 100px;
+    font-size: 12px;
+    font-weight: bold;
+    font-family:sans-serif;
+}
+.btn-create-account{
+    color: white;
+    background-color: black;
+    margin: 16px 0;
+    height: 35px;
+    width: 132px;
+    font-size: 12px;
+    font-weight: bold;
+    font-family:sans-serif;
+}
+.forgot-password{
+    margin: 6px 0;
+}
+.forgot-password a{
+    margin: 6px 0;
+    font-size: 14.5px;
+    font-weight:400;
+    font-family:initial;
+    color: black;
+
+}
+a{
+    text-decoration: none;
+}
+a::after{
+    color: black;
+}
+.link-fb-gg i{
+    margin: 0 5px;
+    height: 20px;
+}
+.link-fb-gg a{
+    
+    font-size: 12px !important;
+    line-height: 20px;
+    display: block;
+    width: 96px;
+    color: white;
+    font-size: 16px;
+    padding: 5px 0 0 6px;
+    margin: 6px 0;
+}
+
+.link-fb{
+    background-color: rgb(59,89,152);
+}
+.link-gg{
+    background-color: rgb(224,47,47);
+    margin-left: 12px !important;
+}
+@media screen and (max-width: 764px) {
+    .main-login{
+        flex-direction: column;
+    }
+    .container-login{
+        width: 83%;
+    }
+}
+
