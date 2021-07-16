@@ -7,7 +7,7 @@ const session = require('express-session');
 var passport = require('passport');
 var flash = require('connect-flash');
 var validator = require('express-validator');
-var MongoStore = require('connect-mongodb-session')(session);
+var MongoDBStore = require('connect-mongodb-session')(session);
 const mongoose = require('mongoose');
 
 const route = require('./routes/index');
@@ -17,6 +17,10 @@ const db = require('./config/db');
 db.connect();
 
 const app = express();
+var store = new MongoDBStore({
+  uri: 'mongodb+srv://pisces2305:Dat20011003@cluster0.113a0.mongodb.net/DA_Web?retryWrites=true&w=majority',
+  collection: 'mySessions'
+});
 
 const port = process.env.PORT || 5000;
 
@@ -37,7 +41,7 @@ app.use(session({
   secret: 'mysupersecret', 
   resave: false, 
   saveUninitialized: false,
-  store: new MongoStore({mongooseConnection: mongoose.connection}),
+  store: store,
   cookie: { maxAge: 180 * 60 * 1000 }
 }));
 app.use(passport.initialize());
