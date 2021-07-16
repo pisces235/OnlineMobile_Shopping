@@ -1,0 +1,73 @@
+<div class="contain-detail">
+    <div class="detail-left">
+        <img src="{{product.image}}" alt="" id="product-img">
+
+        <div class="small-img-row">
+            {{#each product.gallery}}
+                <div class="small-img-col">
+                    <img src="{{this}}" width="100%" class="small-img">
+                </div>
+            {{/each}}
+        </div>
+    </div>
+    <div class="detail-right">
+        <p>{{product.name}}</p>
+        <span>{{vnd product.price}}</span>
+        <select id="color-product" name="color">
+            {{#each product.color}}
+                <option value="{{this}}">{{this}}</option>
+            {{/each}}
+        </select>
+
+        <select id="capacity-product" name="capacity">
+            {{#each product.capacity}}
+                <option value="{{this}}">{{this}}GB</option>
+            {{/each}}
+        </select>
+        <form action="/user/add/{{product._id}}" method="get">
+            <input type="number" name="qty" min="1" max="1000" value="1">
+            <button type="submit"><li class="fa fa-shopping-cart"></li> Thêm vào giỏ hàng</button>
+        </form>
+    </div>
+
+    <div class="detail-info">
+        <div>
+            <span>BÀI VIẾT ĐÁNH GIÁ</span>
+            <div>
+                {{{product.desc}}}
+            </div>
+        </div>
+    </div>
+
+    <div class="feedback">
+        <span>PHẢN HỒI</span>
+        <div class="fb-comments" data-href="http://localhost:5000/products/detail" data-width="" data-numposts="5"></div>
+    </div>
+</div>
+
+
+
+
+<script>
+    //js for toggle gallery
+var ProductImg = document.getElementById('product-img');
+var SmallImg = document.getElementsByClassName('small-img');
+
+SmallImg[0].onclick = function () {
+    ProductImg.src = SmallImg[0].src;
+};
+SmallImg[1].onclick = function () {
+    ProductImg.src = SmallImg[1].src;
+};
+SmallImg[2].onclick = function () {
+    ProductImg.src = SmallImg[2].src;
+};
+SmallImg[3].onclick = function () {
+    ProductImg.src = SmallImg[3].src;
+};
+SmallImg[4].onclick = function () {
+    ProductImg.src = SmallImg[4].src;
+};
+
+
+</script>

@@ -1,0 +1,108 @@
+<div class="products-page-left">
+    <div class="content-left-product-page">
+        <p class="contain-left-title"><span>DÀNH CHO BẠN <i class="fa fa-plus-circle" onclick="show(0)"></i></span></p>
+        <div class="ct-show">
+           {{#each discountproducts}}
+              <a href="/products/{{this._id}}">
+                <div class="contain-products-page-left">
+                    <img src="{{this.image}}" alt="">
+                    <div>
+                        <p>{{this.name}}</p>
+                        {{#if this.checkdiscount}}
+                        <div class="contain-product-price">
+                          <div class="price">{{discountprice this.price this.discount}}<sup>đ</sup></div>
+                          <div class="discount-price">{{vnd this.price}}<sup>đ</sup></div>
+                        </div>
+                        {{else}}
+                        <div class="contain-product-price">
+                          <div class="price">{{vnd this.price}}<sup>đ</sup></div>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+              </a>
+            {{/each}}
+        </div>
+    </div>
+
+    <div class="content-left-product-page">
+        <p class="contain-left-title"><span >SẢN PHẨM MỚI  <i class="fa fa-plus-circle" onclick="show(1)"></i></span></p>
+        <div class="ct-show">
+            {{#each featuredproducts}}
+              <a href="">
+                <div class="contain-products-page-left">
+                    <img src="{{this.image}}" alt="">
+                    <div>
+                        <p>{{this.name}}</p>
+                        {{#if this.checkdiscount}}
+                          <div class="contain-product-price">
+                            <div class="price">{{discountprice this.price this.discount}}<sup>đ</sup></div>
+                            <div class="discount-price">{{vnd this.price}}<sup>đ</sup></div>
+                          </div>
+                        {{else}}
+                          <div class="contain-product-price">
+                            <div class="price">{{vnd this.price}}<sup>đ</sup></div>
+                          </div>
+                        {{/if}}
+                    </div>
+                </div>
+              </a>
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+<div class="products-page-right">
+    <div class="container-top">
+        <form action="/products/filter-search" method="post">
+          {{#filter filter}}
+          
+          {{/filter}}
+        </form>
+
+        <div>
+            <button><i class="fa fa-th-large"></i></button>
+            <button><i class="fa fa-list"></i></button>
+        </div>
+    </div>
+
+    
+    <div class="container-product-cart">
+      {{#each products}}
+        <div class="product-cart">
+        <a href="/products/{{this._id}}" class="link-product">
+          <div class="product-cart-contain-hover">
+            <img src="{{this.image}}">
+            <div class="product-hover-contain">
+              <a href="/user/add/{{this._id}}" class="link-action-product"><i class="fa fa-shopping-cart"></i></a>
+              <a href="" class="link-action-product"><i class="fa fa-eye"></i></a>
+              <a href="/products/{{this._id}}" class="link-action-product"><i class="fa fa-link"></i></a>
+            </div>
+            {{#if this.checkdiscount}}
+            <div class="container-discount">
+              <p>-{{this.discount}}%</p>
+            </div>
+            {{/if}}
+          </div>
+          <div class="container-product-text">
+              <a href="/products/{{this._id}}" class="link-product">
+                <div class="product-name" title="{{this.name}}">{{this.name}}</div>
+              </a>
+              {{#if this.checkdiscount}}
+              <div class="contain-product-price">
+                <div class="price">{{discountprice this.price this.discount}}<sup>đ</sup></div>
+                <div class="discount-price">{{vnd this.price}}<sup>đ</sup></div>
+              </div>
+              {{else}}
+              <div class="contain-product-price">
+                <div class="price">{{vnd this.price}}<sup>đ</sup></div>
+              </div>
+              {{/if}}
+            </div>
+        </a>
+      </div>
+      {{/each}}
+    
+    </div>
+</div>
+

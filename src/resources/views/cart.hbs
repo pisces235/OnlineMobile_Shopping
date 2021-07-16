@@ -1,0 +1,41 @@
+{{#if cart}}
+    <table>
+        <tr>
+            <th>Sản phẩm</th>
+            <th>Mô tả</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Tổng</th>
+            <th>Xóa</th>
+        </tr>
+        {{#each cart}}
+        <tr>
+            <td><a href="/products/{{this.id}}"><img src="{{this.image}}" alt=""></a></td>
+            <td><a href="/products/{{this.id}}">{{this.name}}</a></td>
+            <td>{{vnd this.price}}<sup>đ</sup></td>
+            <td>
+                <form action="/user/update/{{this.id}}">
+                    <input type="number" value="{{this.qty}}" name="qty" id="qty" min="1" max="1000" onchange="this.form.submit()">
+                </form>
+            </td>
+            <td id="total">{{vnd (itemtotal this.price this.qty)}}<sup>đ</sup></td>
+            <td><a href="/user/update/{{this.id}}?action=clear" id="clear">Xóa</a></td>
+        </tr>
+        {{/each}}
+    </table>
+    <div class="subtotal">
+        <p>Tổng <b>{{vnd (subtotal cart)}}<sup>đ</sup></b></p>
+        <i>Giá trên chưa bao gồm phí giao hàng</i>
+        <div class="button">
+            <a href="/checkout">THANH TOÁN</a>
+            <a href="/">TIẾP TỤC MUA SẮM</a>
+        </div>
+    </div>
+{{^}}
+{{/if}}
+<script>
+    document.getElementById("clear").addEventListener("click", function() {
+        if(!confirm('Bạn muốn xóa sản phẩm này ?'))
+            return false
+    })
+</script>

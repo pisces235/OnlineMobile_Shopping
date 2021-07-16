@@ -1,21 +1,78 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">WAO team</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<div class="header-logo">
+  <a href="/"><img src="/images/logo.png" alt=""></a>
+</div>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+<nav id="navbar">
+  <ul>
+    <li class="dropdown">
+      <a href="/" class="dropbtn">TRANG CHỦ</a>
+    </li>
+    <li class="dropdown">
+      <a href="/products" class="dropbtn">SẢN PHẨM</a>
+    </li>
+    <li class="dropdown">
+      <a href="" class="dropbtn">REALME</a>
+      <div class="dropdown-content">
+        <a href="#">iPhone 12</a>
+        <a href="#">iPhone 11</a>
+        <a href="#">iPhone 10</a>
+      </div>
+    </li>
+
+    <li class="dropdown">
+      <a href="" class="dropbtn">XIAOMI</a>
+      <div class="dropdown-content">
+        <a href="#">iPhone 12</a>
+        <a href="#">iPhone 11</a>
+        <a href="#">iPhone 10</a>
+      </div>
+    </li>
+
+    <li class="dropdown">
+      <a href="" class="dropbtn">VSMART</a>
+      <div class="dropdown-content">
+        <a href="#">iPhone 12</a>
+        <a href="#">iPhone 11</a>
+        <a href="#">iPhone 10</a>
+      </div>
+    </li>
+  </ul>
+
+  <div class="header-right">
+    <form class="search-container" action="/products/search">
+      <input type="text" placeholder="Tìm kiếm..." id="search-input" name="search">
+      <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
     </form>
+
+    <div class="cart-container">
+      <i class="fa fa-shopping-cart"></i>
+      <a href="/cart">
+        <div class="cart-content">GIỎ HÀNG 
+        {{#if cart}}
+          <div class="count-item">{{cart.length}}</div> 
+        {{^}}
+          <div class="count-item">0</div> 
+        {{/if}}
+        </div>
+      </a>
+    </div>
+
+    <div class="user-container">
+      <i class="fas fa-user"></i>
+      <div class="dropdown-content">
+        <a href="/user/login"><i class="fas fa-user"></i> &nbsp; Đăng nhập</a>
+        <a href="/user/signin"><i class="fas fa-key"></i> &nbsp; Đăng ký</a>
+      </div>
+    </div>
+
+    <div class="order-container">
+      <a href=""><i class="fa fa-clipboard-check"></i></a>
+    </div>
   </div>
 </nav>
+
+{{#if sessionFlash.message}}
+      <div class="alert alert-info" id="message-info">
+            {{{sessionFlash.message}}} <span onclick="close_message()">x</span>
+      </div>
+{{/if}}
