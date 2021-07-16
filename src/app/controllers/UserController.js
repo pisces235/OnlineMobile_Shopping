@@ -89,7 +89,6 @@ class UserController {
           message: product.name.toString() +" đã thêm vào giỏ hàng"
         }
       }
-      console.log(typeof req.session.cart[0].qty)
       res.redirect("back");
     });
     
