@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
             useCreateIndex: true,
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            useFindAndModify: false
+            useFindAndModify: true
         })
         console.log('Connect sucessfuly!')
     } catch (error) {
