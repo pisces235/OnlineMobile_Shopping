@@ -727,7 +727,7 @@ a:hover {
   .detail-left{
     width: 40%;
     align-items: center;
-    img{width: 510px;}
+    img{width: 510px; }
     .small-img-row{
       margin-top: 20px;
       display: flex;
@@ -749,6 +749,7 @@ a:hover {
   .detail-right{
     width: 40%;
     margin-top: 50px;
+    display: block;
     p, span, input, button, select { 
       float: left;
     }
@@ -765,7 +766,7 @@ a:hover {
       margin:0 10px 20px 0;
     }
     #capacity-product {
-      margin-right: 200px;
+      margin-right: 80%;
     }
     input, button{
       font-size: 15px;
@@ -778,7 +779,7 @@ a:hover {
     button {
       margin-left: 15px;
       width: 350px;
-      padding: 15px 55px 15px 55px;
+      padding: 16px 55px 16px 55px;
       background-color: black;
       color: white;
       font-weight: bold;
@@ -799,6 +800,9 @@ a:hover {
       font-weight: bold;
       text-align: left;
       font-size: 40px;
+    }
+    img{
+      max-width: 95%;
     }
   }
   .feedback {
@@ -910,12 +914,13 @@ footer {
   }
 
 }
-@media only screen and (max-width: 820px){
+@media only screen and (max-width: 986px){
   .container {
     width: 100%;
     max-width: 100%;
     padding: 0;
   }
+  
   header {
     width: 100vw !important;
   }
@@ -951,8 +956,17 @@ footer {
 
   .contain-detail {
     align-items: flex-start;
-    .detail-right, .detail-left {
+     .detail-left {
       width: 100vw;
+      img {
+        margin-left: 22%;
+      }
+    }
+    .detail-right {
+      width: 50vw;
+      button {
+        margin-left: 0;
+      }
     }
   }
 }
@@ -1041,7 +1055,17 @@ footer {
       }
     }
   }
+
+  .contain-detail {
+    .detail-right {
+      width: 70vw;
+      button {
+        margin-left: 20px;
+      }
+    }
+  }
 }
+
 
 
 @media only screen and (max-width: 480px){

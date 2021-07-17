@@ -96,9 +96,16 @@ class ProductController {
                 list.push(products[i]);
               }
             }
-            res.render('search', { products: list, 
-            discountproducts: multipleMongooseToObject(discountproducts),
-            featuredproducts: multipleMongooseToObject(featuredproducts),});
+            if(list.length > 0) {
+              res.render('search', { products: list, 
+              discountproducts: multipleMongooseToObject(discountproducts),
+              featuredproducts: multipleMongooseToObject(featuredproducts),});
+            }
+            else {
+              res.render('search', {  search: req.session.search,
+                discountproducts: multipleMongooseToObject(discountproducts),
+                featuredproducts: multipleMongooseToObject(featuredproducts),});
+            }
           })
         })
       })

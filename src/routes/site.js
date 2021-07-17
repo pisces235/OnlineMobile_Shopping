@@ -7,6 +7,20 @@ const siteController = require('../app/controllers/SiteController');
 
 router.get('/cart', siteController.cart);
 router.get('/filter', siteController.filter);
-router.get('/', siteController.index);
+router.get('/', isLoggedIn, siteController.index);
 
 module.exports = router;
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+      return next();
+    }
+    res.redirect('/user/login');
+  }
+  function notLoggedIn(req, res, next){
+    if(!req.isAuthenticated()){
+      return next();
+    }
+    res.redirect('/');
+  }
+  

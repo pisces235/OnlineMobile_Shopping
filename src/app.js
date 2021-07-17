@@ -1,15 +1,16 @@
 const express = require('express');
+const createError = require('http-errors');
 const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const csrf = require('csurf');
 const session = require('express-session');
 var passport = require('passport');
 var flash = require('connect-flash');
-var validator = require('express-validator');
 var MongoDBStore = require('connect-mongodb-session')(session);
 const mongoose = require('mongoose');
-
+validator = require('express-validator');
 const route = require('./routes/index');
 const db = require('./config/db');
 
@@ -31,12 +32,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 //HTTP logger
 app.use(morgan('dev'));
 
+
+// Passport config
+require('./config/passport');
+
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
-
+app.use(validator());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(csrf({ cookie: true }))
 app.use(session({
   secret: 'mysupersecret', 
   resave: false, 
@@ -44,15 +50,11 @@ app.use(session({
   store: store,
   cookie: { maxAge: 180 * 60 * 1000 }
 }));
+// Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(flash());
-app.use(function(req, res, next){
-    res.locals.sessionFlash = req.session.sessionFlash;
-    delete req.session.sessionFlash;
-    next();
-});
 
 //Template engine
 app.engine(
@@ -96,19 +98,31 @@ app.engine(
           subtotal += cart[i].price * cart[i].qty;
         }
         return subtotal;
+      },
+      checkArray: (array) => {
+        if (array.length > 0) return array;
+        return [];
       }
     }
   }),
 );
 
 app.get('*', (req, res, next) => {
+  res.locals.sessionFlash = req.session.sessionFlash;
+  delete req.session.sessionFlash;
+  res.locals.login= req.isAuthenticated();
   res.locals.cart = req.session.cart;
   res.locals.search = req.session.search;
+  res.locals.user = req.user || null;
   next(); 
 })
 
 //route
 route(app);
+
+app.use(function(req, res, next) {
+  next(createError(404));
+});
 
 // error handler
 app.use(function(err, req, res, next) {

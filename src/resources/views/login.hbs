@@ -4,9 +4,19 @@
     <div class="flex-grow-1"></div>
     <div class="container-login d-flex flex-column space-between">
         <h1>ĐĂNG NHẬP</h1>
-        <input name="username" type="text" placeholder="Email" id="username">
-        <input name="password" type="password" placeholder="Mật khẩu" id="password">
-        <button type="submit" id="submit" class="btn-login">ĐĂNG NHẬP</button>
+        <form action="/user/login" method="POST">
+            {{#if hasErrors}}
+                <div class="alert alert-danger">
+                    {{#each messages}}
+                        <p>{{this}}</p>
+                    {{/each}}
+                </div>
+            {{/if}}
+            <input name="username" type="text" placeholder="User name" id="username">
+            <input name="password" type="password" placeholder="Mật khẩu" id="password">
+            <input type="hidden" name="_csrf" value={{ csrfToken }}>
+            <button type="submit" id="submit" class="btn-login">ĐĂNG NHẬP</button>
+        </form>
         <div class="forgot-password">
             <a href="/forgotPassword"><i>Quên mật khẩu</i></a>
         </div>
@@ -20,7 +30,7 @@
         <span>
             Tạo tài khoản để dễ dàng hơn trong việc mua sắm và kiểm tra các đơn đặt hàng của bạn!
         </span>
-        <button type="submit" class="btn-create-account"><i class="fas fa-user"></i> TẠO TÀI KHOẢN</button>
+        <a href="/user/register"class="btn-create-account"><i class="fas fa-user"></i> TẠO TÀI KHOẢN</a>
     </div>
     <div class="flex-grow-1"></div>
 </div>

@@ -11,16 +11,16 @@
       <a href="/products" class="dropbtn">SẢN PHẨM</a>
     </li>
     <li class="dropdown">
-      <a href="" class="dropbtn">REALME</a>
+      <a href="/products/search?search=iphone" class="dropbtn">IPHONE</a>
       <div class="dropdown-content">
-        <a href="#">iPhone 12</a>
-        <a href="#">iPhone 11</a>
-        <a href="#">iPhone 10</a>
+        <a href="/products/search?search=iphone+12">iPhone 12</a>
+        <a href="/products/search?search=iphone+11">iPhone 11</a>
+        <a href="/products/search?search=iphone+10">iPhone 10</a>
       </div>
     </li>
 
     <li class="dropdown">
-      <a href="" class="dropbtn">XIAOMI</a>
+      <a href="/products/search?search=samsung" class="dropbtn">SAMSUNG</a>
       <div class="dropdown-content">
         <a href="#">iPhone 12</a>
         <a href="#">iPhone 11</a>
@@ -45,23 +45,29 @@
     </form>
 
     <div class="cart-container">
-      <i class="fa fa-shopping-cart"></i>
-      <a href="/cart">
-        <div class="cart-content">GIỎ HÀNG 
-        {{#if cart}}
-          <div class="count-item">{{cart.length}}</div> 
-        {{^}}
-          <div class="count-item">0</div> 
-        {{/if}}
-        </div>
-      </a>
+      {{#if login}}
+        <i class="fa fa-shopping-cart"></i>
+        <a href="/cart">
+          <div class="cart-content">GIỎ HÀNG 
+          {{#if cart}}
+            <div class="count-item">{{cart.length}}</div> 
+          {{^}}
+            <div class="count-item">0</div> 
+          {{/if}}
+          </div>
+        </a>
+      {{/if}}
     </div>
 
     <div class="user-container">
       <i class="fas fa-user"></i>
       <div class="dropdown-content">
-        <a href="/user/login"><i class="fas fa-user"></i> &nbsp; Đăng nhập</a>
-        <a href="/user/signin"><i class="fas fa-key"></i> &nbsp; Đăng ký</a>
+        {{#if login}}
+          <a href="/user/logout"><i class="fas fa-user"></i> &nbsp; Đăng xuất</a>
+        {{^}}
+          <a href="/user/login"><i class="fas fa-user"></i> &nbsp; Đăng nhập</a>
+          <a href="/user/register"><i class="fas fa-key"></i> &nbsp; Đăng ký</a>
+        {{/if}}
       </div>
     </div>
 

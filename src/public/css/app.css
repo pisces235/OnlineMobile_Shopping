@@ -607,7 +607,8 @@ a:hover {
           opacity: 0.8; }
   .contain-detail .detail-right {
     width: 40%;
-    margin-top: 50px; }
+    margin-top: 50px;
+    display: block; }
     .contain-detail .detail-right p, .contain-detail .detail-right span, .contain-detail .detail-right input, .contain-detail .detail-right button, .contain-detail .detail-right select {
       float: left; }
     .contain-detail .detail-right p, .contain-detail .detail-right span {
@@ -620,7 +621,7 @@ a:hover {
       padding: 10px;
       margin: 0 10px 20px 0; }
     .contain-detail .detail-right #capacity-product {
-      margin-right: 200px; }
+      margin-right: 80%; }
     .contain-detail .detail-right input, .contain-detail .detail-right button {
       font-size: 15px; }
     .contain-detail .detail-right input {
@@ -630,7 +631,7 @@ a:hover {
     .contain-detail .detail-right button {
       margin-left: 15px;
       width: 350px;
-      padding: 15px 55px 15px 55px;
+      padding: 16px 55px 16px 55px;
       background-color: black;
       color: white;
       font-weight: bold;
@@ -648,6 +649,8 @@ a:hover {
       font-weight: bold;
       text-align: left;
       font-size: 40px; }
+    .contain-detail .detail-info img {
+      max-width: 95%; }
   .contain-detail .feedback {
     width: 100%; }
     .contain-detail .feedback span {
@@ -734,7 +737,7 @@ footer {
       padding: 10px 15px 10px 15px;
       background-color: #4d4d4d; }
 
-@media only screen and (max-width: 820px) {
+@media only screen and (max-width: 986px) {
   .container {
     width: 100%;
     max-width: 100%;
@@ -759,8 +762,14 @@ footer {
         display: none; }
   .contain-detail {
     align-items: flex-start; }
-    .contain-detail .detail-right, .contain-detail .detail-left {
-      width: 100vw; } }
+    .contain-detail .detail-left {
+      width: 100vw; }
+      .contain-detail .detail-left img {
+        margin-left: 22%; }
+    .contain-detail .detail-right {
+      width: 50vw; }
+      .contain-detail .detail-right button {
+        margin-left: 0; } }
 
 @media only screen and (max-width: 768px) {
   .carousel-item img {
@@ -798,7 +807,11 @@ footer {
     width: 95%; }
     .products-page-right .container-product-cart .product-cart {
       width: 48%;
-      margin: 1%; } }
+      margin: 1%; }
+  .contain-detail .detail-right {
+    width: 70vw; }
+    .contain-detail .detail-right button {
+      margin-left: 20px; } }
 
 @media only screen and (max-width: 480px) {
   .carousel-item img {

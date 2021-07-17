@@ -1,5 +1,5 @@
 var passport = require('passport');
-var User = require('../models/user');
+var User = require('../app/models/User');
 var LocalStrategy = require('passport-local').Strategy;
 passport.serializeUser(function(user, done){
     done(null, user.id);
@@ -15,14 +15,16 @@ passport.use('local.signup', new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password',
     emailField: 'email',
+    phoneNumberField: 'phoneNumber',
     passReqToCallback: true
 }, function(req, username, password, done){
-    var email = req.body.email;
+    var name = req.body.name;
+    var phoneNumber = req.body.phoneNumber
     req.checkBody('username', 'Tên tài khoản không được để trống').notEmpty();
-    req.checkBody('email', 'Email không được để trống').notEmpty();
-    req.checkBody('email', 'Email không đúng định dạng').isEmail();
+    req.checkBody('name', 'Email không được để trống').notEmpty();
     req.checkBody('password', 'Mật khẩu không được trống').notEmpty();
     req.checkBody('password', 'Mật khẩu dài ít nhất 8 ký tự').isLength({min: 8});
+    req.checkBody('phoneNumber', 'Số điện thoại dài 10 ký tự').isLength(10);
     var errors = req.validationErrors();
     
     if(errors){
@@ -41,7 +43,8 @@ passport.use('local.signup', new LocalStrategy({
             var newUser = new User();
             newUser.username = username;
             newUser.password = newUser.encryptPassword(password);
-            newUser.email = email;
+            newUser.name = name;
+            newUser.phoneNumber = phoneNumber;
             newUser.save(function(err, result){
                 if(err) return done(err);
                 return done(null, newUser);

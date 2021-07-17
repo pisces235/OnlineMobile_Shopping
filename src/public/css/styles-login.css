@@ -62,12 +62,16 @@ button{
 .btn-create-account{
     color: white;
     background-color: black;
+    padding: 10px;
     margin: 16px 0;
     height: 35px;
     width: 132px;
     font-size: 12px;
     font-weight: bold;
     font-family:sans-serif;
+}
+.btn-create-account:hover {
+    color: white;
 }
 .forgot-password{
     margin: 6px 0;
