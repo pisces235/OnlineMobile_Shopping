@@ -21,7 +21,8 @@ passport.use('local.signup', new LocalStrategy({
     var name = req.body.name;
     var phoneNumber = req.body.phoneNumber
     req.checkBody('username', 'Tên tài khoản không được để trống').notEmpty();
-    req.checkBody('name', 'Email không được để trống').notEmpty();
+    req.checkBody('username', 'Tên tài khoản ít nhất 5 ký tự').isLength({min : 5});
+    req.checkBody('name', 'Tên không được để trống').notEmpty();
     req.checkBody('password', 'Mật khẩu không được trống').notEmpty();
     req.checkBody('password', 'Mật khẩu dài ít nhất 8 ký tự').isLength({min: 8});
     req.checkBody('phoneNumber', 'Số điện thoại dài 10 ký tự').isLength(10);
