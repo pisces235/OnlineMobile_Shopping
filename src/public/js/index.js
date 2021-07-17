@@ -59,6 +59,15 @@ function resize() {
   a[1].style.display = "block";
   
 }
+function loadfooter() {
+  var header= document.getElementById("header");
+  var body = document.getElementsByTagName("body");
+  if(document.body.clientHeight <= 1000) {
+    header.style.position = "relative";
+    header.style.top = 0;
+    header.style.width = "100%";
+  }
+}
 
 function show(i) {
   
