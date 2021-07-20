@@ -5,7 +5,9 @@ const siteController = require('../app/controllers/SiteController');
 
 // website.index
 
-router.get('/cart', siteController.cart);
+router.get('/cart', isLoggedIn,siteController.cart);
+router.get('/checkout', isLoggedIn, siteController.checkout);
+router.get('/order', siteController.order);
 router.get('/filter', siteController.filter);
 router.get('/', isLoggedIn, siteController.index);
 

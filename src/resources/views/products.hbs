@@ -6,6 +6,11 @@
               <a href="/products/{{this._id}}">
                 <div class="contain-products-page-left">
                     <img src="{{this.image}}" alt="">
+                    {{#if this.checkdiscount}}
+                    <div class="container-discount">
+                      <p>-{{this.discount}}%</p>
+                    </div>
+                    {{/if}}
                     <div>
                         <p>{{this.name}}</p>
                         {{#if this.checkdiscount}}
@@ -32,6 +37,11 @@
               <a href="">
                 <div class="contain-products-page-left">
                     <img src="{{this.image}}" alt="">
+                    {{#if this.checkdiscount}}
+                    <div class="container-discount">
+                      <p>-{{this.discount}}%</p>
+                    </div>
+                    {{/if}}
                     <div>
                         <p>{{this.name}}</p>
                         {{#if this.checkdiscount}}
@@ -106,3 +116,22 @@
     </div>
 </div>
 
+<script>
+  var a = document.getElementsByClassName('ct-show');
+var button_show = document.getElementsByClassName('fa-plus-circle');
+
+
+
+function resize() {
+  for(var i = 0; i < button_show.length; i++){
+    if (window.outerWidth <= 768) {
+      a[0].style.display = "none";
+      a[1].style.display = "none";
+      return;
+    }
+  }
+  a[0].style.display = "block";
+  a[1].style.display = "block";
+  
+}
+</script>

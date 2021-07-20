@@ -12,7 +12,13 @@
     </div>
     <div class="detail-right">
         <p>{{product.name}}</p>
-        <span>{{vnd product.price}}</span>
+        
+        {{#if product.checkdiscount}}
+            <span>{{vnd product.price}}<sup>đ</sup></span>
+            <span>{{vnd (discountprice product.price product.discount)}}<sup>đ</sup></span>
+        {{^}}
+            <span>{{vnd product.price}}<sup>đ</sup></span>
+        {{/if}}
         <select id="color-product" name="color">
             {{#each product.color}}
                 <option value="{{this}}">{{this}}</option>

@@ -41,6 +41,12 @@ const Product = new Schema({
     },
     gallery: {
         type: Array
+    },
+    discount: {
+        type: Number
+    },
+    checkdiscount: {
+        type: Boolean
     }
 });
 

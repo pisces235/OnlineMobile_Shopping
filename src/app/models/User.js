@@ -8,8 +8,8 @@ var userChema = new Schema({
     email: { type: String },
     fullname: { type: String },
     phonenumber: { type: String },
-    adddress: { type: Array},
-    orders: { type:Array },
+    address: { type: Array},
+    orders: { type: Array },
 }, { timestamps: true });
 
 userChema.methods.encryptPassword = function(password){

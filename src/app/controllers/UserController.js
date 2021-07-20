@@ -10,7 +10,6 @@ class UserController {
   //[GET] /
   login(req, res) {
     var messages = req.flash('error');
-    console.log(messages);
     res.render("login", { csrfToken:  req.csrfToken(), messages: messages, hasErrors: messages.length > 0});
   }
   register(req, res) {
@@ -71,6 +70,9 @@ class UserController {
     var id = req.params.id;
     var qty = req.query.qty;
     Product.findOne({ _id: id }, (err, product) => {
+      var price = 0;
+      if(product.checkdiscount == true) price = product.price - (product.price * product.discount /100);
+      else price = product.price;
       if(err) console.log(err);
       product = mongooseToObject(product);
       if (typeof req.session.cart == "undefined") {
@@ -89,7 +91,7 @@ class UserController {
             id: product._id,
             name: product.name,
             qty: 1,
-            price: product.price,
+            price: price,
             image: product.image
           });
         }
@@ -118,7 +120,7 @@ class UserController {
               id: product._id,
               name: product.name,
               qty: parseInt(qty),
-              price: product.price,
+              price: price,
               image: product.image
             });
           } else {
@@ -126,7 +128,7 @@ class UserController {
               id: product._id,
               name: product.name,
               qty: 1,
-              price: product.price,
+              price: price,
               image: product.image
             });
           }

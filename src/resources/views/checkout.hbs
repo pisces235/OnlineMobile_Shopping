@@ -1,0 +1,40 @@
+
+<style>
+  #navbar, footer {
+    display: none;
+  }
+</style>
+<form action="/order" method="GET" id="form-checkout">
+<div class="container-checkout-left">
+  <p>Thông tin giao hàng</p>
+    <input type="text" name="fullname" id="name" placeholder="Họ tên người nhận" class="form-control">
+    <input type="text" name="email" id="email" placeholder="email" class="form-control">
+    <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Số điện thoại" class="form-control">
+    <input type="text" name="address" placeholder="Nhập địa chỉ" class="form-control">
+    <a href="/cart"><b><i class="fa fa-chevron-left"></i></b> <span>Giỏ hàng</span></a>
+</div>
+
+
+
+<div class="container-checkout-right">
+{{#each cart}}
+  <div class="product-checkout">
+    <img src="{{this.image}}" alt="">
+    <span>{{this.qty}}</span>
+    <p>{{this.name}}</p>
+    <p>{{vnd this.price}}<sup>đ</sup></p>
+  </div>
+{{/each}}
+
+  <div class="contain">
+    <input type="text" placeholder="Mã giảm giá" name="code" class="form-control">
+    <button class="btn btn-info form-control">Sử dụng</button>
+    <textarea name="yc" id="" cols="30" rows="3" class="form-control"></textarea>
+  </div>
+
+  <div class="contain-price">
+    <p><span>Tổng cộng</span> <span>{{vnd (subtotal cart)}}<sup>đ</sup></span></p>
+  </div>
+  <button class="btn btn-info form-control" id="submit" type="submit">Thanh toán</button>
+</div>
+</form>

@@ -42,23 +42,7 @@ window.onclick = function(event) {
   }
 }
 
-var a = document.getElementsByClassName('ct-show');
-var button_show = document.getElementsByClassName('fa-plus-circle');
 
-
-
-function resize() {
-  for(var i = 0; i < button_show.length; i++){
-    if (window.outerWidth <= 768) {
-      a[0].style.display = "none";
-      a[1].style.display = "none";
-      return;
-    }
-  }
-  a[0].style.display = "block";
-  a[1].style.display = "block";
-  
-}
 function loadfooter() {
   var header= document.getElementById("header");
   var body = document.getElementsByTagName("body");
@@ -81,3 +65,4 @@ function close_message() {
   var message = document.getElementById("message-info");
   message.remove();
 }
+

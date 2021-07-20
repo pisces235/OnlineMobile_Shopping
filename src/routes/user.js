@@ -8,13 +8,13 @@ router.get('/update/:id', userController.update);
 router.get('/add/:id', isLoggedIn, userController.add);
 router.get('/logout', isLoggedIn, userController.logout);
 router.get('/login', userController.login);
-router.post('/login', passport.authenticate('local.signin', {
+router.post('/login', passport.authenticate('local.login', {
     successRedirect: '/products',
     failureRedirect: 'login',
     failureFlash: true,
 }));
 router.get('/register', userController.register);
-router.post('/register', passport.authenticate('local.signup', {
+router.post('/register', passport.authenticate('local.register', {
     successRedirect: '/products',
     failureRedirect: 'register',
     failureFlash: true,
@@ -26,7 +26,7 @@ function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
       return next();
     }
-    res.redirect('/user/signin');
+    res.redirect('/user/login');
   }
   function notLoggedIn(req, res, next){
     if(!req.isAuthenticated()){

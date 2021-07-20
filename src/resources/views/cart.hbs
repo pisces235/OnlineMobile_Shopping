@@ -16,7 +16,7 @@
             <td>{{vnd this.price}}<sup>đ</sup></td>
             <td>
                 <form action="/user/update/{{this.id}}">
-                    <input type="number" value="{{this.qty}}" name="qty" id="qty" min="1" max="1000" onchange="this.form.submit()">
+                    <input type="number" value="{{this.qty}}" name="qty" id="qty" min="1" max="1000" onchange="this.form.submit()" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                 </form>
             </td>
             <td id="total">{{vnd (itemtotal this.price this.qty)}}<sup>đ</sup></td>
@@ -26,7 +26,7 @@
     </table>
     <div class="subtotal">
         <p>Tổng <b>{{vnd (subtotal cart)}}<sup>đ</sup></b></p>
-        <i>Giá trên chưa bao gồm phí giao hàng</i>
+        <i>Giá trên đã bao gồm phí giao hàng</i>
         <div class="button">
             <a href="/checkout">THANH TOÁN</a>
             <a href="/">TIẾP TỤC MUA SẮM</a>
